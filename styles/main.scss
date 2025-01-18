@@ -1,0 +1,65 @@
+// Brand Variables
+:root {
+  // Colors
+  --brand-teal: #008080;
+  --brand-gray: #4A4A4A;
+  --brand-coral: #FF6B6B;
+  --brand-green-light: #90EE90;
+  --brand-white-off: #F5F5F5;
+  
+  // Typography
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Roboto', sans-serif;
+  --font-accent: 'Montserrat', sans-serif;
+  
+  // Spacing
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+}
+
+// Effects
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--brand-teal), var(--brand-coral));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    var(--brand-teal) 0%,
+    var(--brand-green-light) 50%,
+    var(--brand-coral) 100%
+  );
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+}
+
+// Typography
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  margin-bottom: var(--spacing-md);
+}
+
+body {
+  font-family: var(--font-body);
+  line-height: 1.6;
+  color: var(--brand-gray);
+}
