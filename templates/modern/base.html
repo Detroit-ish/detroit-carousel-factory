@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-teal: #008080;
+            --brand-gray: #4A4A4A;
+            --brand-coral: #FF6B6B;
+            --brand-green-light: #90EE90;
+            --brand-white-off: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--brand-white-off);
+            color: var(--brand-gray);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff, var(--brand-white-off));
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+        }
+
+        .content {
+            position: relative;
+            height: 100%;
+            padding: 2rem;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            gap: 2rem;
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .accent {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--brand-teal), var(--brand-coral));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Grid Background */
+        .background-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(0,128,128,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,128,128,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            opacity: 0.4;
+        }
+
+        @media print {
+            .slide {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="background-grid"></div>
+        <div class="content">
+            <div id="slideContent"></div>
+        </div>
+    </div>
+    <script>
+        const content = window.slideData || {
+            title: "Systems that help SMBs grow",
+            subtitle: "Without guesswork—combining approachable tech, clear sales processes, and empowering marketing."
+        };
+        
+        document.getElementById('slideContent').innerHTML = `
+            <div class="glass-card">
+                <h1 class="gradient-text">${content.title}</h1>
+                <p class="accent">${content.subtitle}</p>
+            </div>
+        `;
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-teal: #008080;
+      --brand-gray: #4A4A4A;
+      --brand-coral: #FF6B6B;
+      --brand-green-light: #90EE90;
+      --brand-white-off: #F5F5F5;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--brand-teal), var(--brand-coral));
+    }
+
+    .slide-content {
+      width: 90%;
+      height: 85%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem;
+      margin-bottom: 2rem;
+      color: var(--brand-white-off);
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .content {
+      font-family: 'Roboto', sans-serif;
+      font-size: 2.5rem;
+      color: var(--brand-white-off);
+      text-align: center;
+      line-height: 1.4;
+      padding: 0 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="slide-content">
+    <h1 id="title">Default Title</h1>
+    <div id="content" class="content">Default Content</div>
+  </div>
+  <script>
+    // Data injection and error handling
+    try {
+      if (window.slideData) {
+        document.getElementById('title').textContent = slideData.title || 'Missing Title';
+        document.getElementById('content').innerHTML = slideData.content || 'Missing Content';
+        console.log('Data injected:', window.slideData);
+      } else {
+        console.error('No slideData found');
+      }
+    } catch (error) {
+      console.error('Error injecting data:', error);
+    }
+  </script>
+</body>
+</html>

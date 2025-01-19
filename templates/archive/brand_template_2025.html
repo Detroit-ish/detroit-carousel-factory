@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025 Brand Template</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-teal: #007373;
+            --brand-dark-teal: #005c5c;
+            --brand-coral: #FF6F4F;
+            --brand-gray: #2B3A42;
+            --light-green: #E8F5E9;
+            --off-white: #F5F7FA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--off-white);
+            color: var(--brand-gray);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--off-white), #ffffff);
+        }
+
+        /* Modern Grid Background */
+        .background-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(to right, rgba(0,115,115,0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,115,115,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.7;
+        }
+
+        /* 2025 Accent Elements */
+        .accent-shape {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle at center, 
+                rgba(0,115,115,0.08),
+                rgba(255,111,79,0.05) 60%,
+                transparent 100%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .accent-line {
+            position: absolute;
+            width: 2px;
+            height: 40%;
+            background: linear-gradient(to bottom, 
+                var(--brand-teal) 0%,
+                transparent 100%);
+            left: 10%;
+            top: 30%;
+            opacity: 0.15;
+        }
+
+        /* Content Container */
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            padding: 4rem 6rem;
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            color: var(--brand-teal);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-weight: 500;
+        }
+
+        .brand::before {
+            content: '';
+            width: 2px;
+            height: 1.5rem;
+            background: var(--brand-teal);
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .main {
+            display: flex;
+            align-items: center;
+            padding-left: 2rem;
+        }
+
+        .title-block {
+            max-width: 75%;
+        }
+
+        .headline {
+            font-family: 'Playfair Display', serif;
+            font-size: 5.5rem;
+            line-height: 1.1;
+            color: var(--brand-gray);
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .highlight {
+            color: var(--brand-teal);
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.2em;
+            left: -0.1em;
+            right: -0.1em;
+            height: 0.2em;
+            background: var(--brand-coral);
+            opacity: 0.2;
+            z-index: -1;
+        }
+
+        .subheadline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            line-height: 1.5;
+            color: var(--brand-gray);
+            opacity: 0.8;
+            max-width: 80%;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 2rem;
+        }
+
+        .tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            color: var(--brand-teal);
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+            font-weight: 300;
+        }
+
+        .logo {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: var(--brand-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 4px;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1));
+        }
+
+        /* 2025 Animations */
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        }
+
+        @media print {
+            .slide {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            
+            @page {
+                size: 1920px 1080px;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <!-- Background Elements -->
+        <div class="background-grid"></div>
+        <div class="accent-shape"></div>
+        <div class="accent-line"></div>
+
+        <!-- Content -->
+        <div class="content">
+            <header class="header">
+                <div class="brand">WAGNER SYSTEMS</div>
+                <div class="brand">2025</div>
+            </header>
+
+            <main class="main">
+                <div class="title-block">
+                    <h1 class="headline">Build <span class="highlight">Systems</span>.<br>Drive Growth.</h1>
+                    <p class="subheadline">Making impressions before they were a metric.</p>
+                </div>
+            </main>
+
+            <footer class="footer">
+                <div class="tagline">Systems Architect & Growth Strategist</div>
+                <div class="logo">JW</div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

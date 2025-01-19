@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-teal: #008080;
+            --brand-gray: #4A4A4A;
+            --brand-coral: #FF6B6B;
+            --brand-green-light: #90EE90;
+            --brand-white-off: #F5F5F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: var(--brand-white-off);
+            color: var(--brand-gray);
+        }
+
+        .slide {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #ffffff, var(--brand-white-off));
+            padding: 2rem;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: rgba(0, 128, 128, 0.05);
+        }
+
+        .feature-item::before {
+            content: '→';
+            color: var(--brand-coral);
+            font-weight: bold;
+        }
+
+        .price-tag {
+            color: var(--brand-coral);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-card {
+            padding: 1.5rem;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .tech-diagram {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            align-items: center;
+            justify-items: center;
+            margin-top: 2rem;
+        }
+
+        .diagram-node {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--brand-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .diagram-line {
+            height: 2px;
+            background: var(--brand-coral);
+            grid-column: span 1;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--brand-teal);
+        }
+
+        .highlight {
+            color: var(--brand-coral);
+        }
+
+        .emoji {
+            font-style: normal;
+            font-size: 1.2em;
+        }
+
+        @media print {
+            .slide {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Content will be injected by JavaScript -->
+    <div id="slides"></div>
+
+    <script>
+        const slidesContent = [
+            {
+                type: 'intro',
+                title: "Apollo's Got That Enterprise Heat 🔥",
+                subtitle: "Waterfall Enrichment beta just dropped - pulling from 5 data providers in real-time",
+                note: "Your data's about to get fresh & clean (IYKYK 90s fam)"
+            },
+            {
+                type: 'features',
+                title: "What Most SMBs Can't Touch",
+                items: [
+                    "Bombora's intent data ($$$)",
+                    "LeadSift insights",
+                    "Premium enrichment",
+                    "Enterprise dialers",
+                    "Advanced filters",
+                    "Website tracking"
+                ]
+            },
+            {
+                type: 'comparison',
+                title: "The Real Deal",
+                options: [
+                    {
+                        title: "The Old Way",
+                        points: [
+                            "Multiple subscriptions",
+                            "Scattered data",
+                            "Integration headaches",
+                            "Budget drain"
+                        ]
+                    },
+                    {
+                        title: "The Apollo Way",
+                        points: [
+                            "All-in-one platform",
+                            "Pay-per-use enrichment",
+                            "Built-in everything",
+                            "Enterprise features"
+                        ]
+                    }
+                ]
+            },
+            {
+                type: 'cta',
+                title: "Stop Bleeding Money",
+                options: [
+                    "Keep burning cash on multiple tools",
+                    "Master ONE solid platform (Apollo)",
+                    "Accept limited access to pro features"
+                ],
+                note: "Pro tip: Stuck? ChatGPT/Claude got your back. Or slide in my DMs."
+            }
+        ];
+
+        // Inject slides based on content type...
+        // [Rest of the JavaScript implementation]
+    </script>
+</body>
+</html>
