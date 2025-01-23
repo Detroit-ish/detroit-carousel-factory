@@ -2,50 +2,46 @@ const puppeteer = require('puppeteer');
 const fs = require('fs').promises;
 
 const SIZES = {
-  carousel: { width: 1080, height: 1920 }  // Standard 9:16 mobile ratio
+    carousel: { 
+        width: 1080, 
+        height: 1350,
+        scale: 2
+    }
 };
 
-async function verifyImage(filePath) {
-    const stats = await fs.stat(filePath);
-    console.log(`Generated image at ${filePath}: ${stats.size} bytes`);
-    if (stats.size < 1000) {
-        throw new Error('Generated image seems too small - possible generation error');
-    }
-    return stats.size;
-}
-
-async function captureSlides({ template, data, format = 'carousel', outputPath }) {
-    console.log('Capturing slide:', {format, outputPath, data});
-    
+async function captureSlides({ template, data, outputPath }) {
     const browser = await puppeteer.launch({
         headless: "new",
-        args: ['--no-sandbox', '--allow-file-access-from-files']
+        args: [
+            '--no-sandbox',
+            '--allow-file-access-from-files',
+            `--window-size=${SIZES.carousel.width},${SIZES.carousel.height}`
+        ]
     });
 
     try {
         const page = await browser.newPage();
-        
-        // Set viewport to mobile portrait
         await page.setViewport({
             width: SIZES.carousel.width,
             height: SIZES.carousel.height,
-            deviceScaleFactor: 2
+            deviceScaleFactor: SIZES.carousel.scale,
+            isMobile: true,
+            hasTouch: true,
+            isLandscape: false
         });
 
-        await page.goto(`file://${template}`);
+        await page.goto(`file://${template}`, {
+            waitUntil: 'networkidle0'
+        });
 
-        // Inject data and wait for it to be processed
         await page.evaluate((data) => {
             window.slideData = data;
             document.getElementById('title').textContent = data.title;
             document.getElementById('content').innerHTML = data.content;
-            console.log('Data injected:', data);
         }, data);
 
-        // Wait for content to be rendered
         await page.waitForTimeout(1000);
 
-        // Take screenshot
         await page.screenshot({
             path: outputPath,
             type: 'png',
@@ -57,10 +53,8 @@ async function captureSlides({ template, data, format = 'carousel', outputPath }
             }
         });
 
-        await verifyImage(outputPath);
-
     } catch (error) {
-        console.error('Error during slide capture:', error);
+        console.error('Error capturing slide:', error);
         throw error;
     } finally {
         await browser.close();

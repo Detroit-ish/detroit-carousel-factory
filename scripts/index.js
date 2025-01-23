@@ -24,19 +24,14 @@ const mockData = [
 
 async function generateCarousel() {
   try {
-    const template = path.join(__dirname, '..', 'templates', 'apollo-slide.html');
+    const template = path.join(__dirname, '..', 'templates', 'modern', 'base.html');
     const images = [];
     const distDir = path.join(__dirname, '..', '..', 'dist');
     
-    console.log('Template path:', template);
-    console.log('Dist directory:', distDir);
-
     await fs.mkdir(distDir, { recursive: true });
 
     for (let i = 0; i < mockData.length; i++) {
       const outputPath = path.join(distDir, `slide_${i}.png`);
-      console.log(`Generating slide ${i} at: ${outputPath}`);
-      
       await captureSlides({
         template,
         data: mockData[i],
@@ -45,11 +40,8 @@ async function generateCarousel() {
       images.push(outputPath);
     }
 
-    const pdfPath = path.join(distDir, 'apollo_carousel.pdf');
-    console.log('Creating PDF at:', pdfPath);
+    const pdfPath = path.join(distDir, 'carousel.pdf');
     await compilePDF(images, pdfPath);
-    
-    console.log('Generation complete!');
   } catch (error) {
     console.error('Error:', error);
   }
